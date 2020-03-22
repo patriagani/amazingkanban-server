@@ -17,8 +17,8 @@ class KanbanController {
 
     static createKanban(req, res) {
         let obj = {
-            title: req.user.title,
-            description: req.user.description,
+            title: req.body.title,
+            description: req.body.description,
             point: req.body.point,
             assignedto: req.body.assignedto
         }
