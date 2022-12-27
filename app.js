@@ -1,9 +1,11 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose');
+require('dotenv').config()
+const port = process.env.PORT || 3000
 
 //Connect mongodb via mongoose
-mongoose.connect('mongodb://localhost/kanban');
+mongoose.connect(process.env.MONGODB_URL);
 
 //Routes
 const indexRoute = require('./routes/index')
@@ -27,6 +29,6 @@ io.on('connection', function (socket) {
 app.use('/', indexRoute)
 app.use('/kanban', kanbanRoute)
 
-server.listen('3000', function(){
+server.listen(port, function(){
     console.log('connected to port 3000')
 })
